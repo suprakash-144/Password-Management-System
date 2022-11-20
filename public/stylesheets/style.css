@@ -1,10 +1,17 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
 body {
   min-height: 100vh;
-
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
-.s {
+.section {
   min-height: 100vh;
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: column;
 }
 a {
   color: #00b7ff;

@@ -1,0 +1,24 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+.section {
+  margin: 2rem;
+}
+.filter_input {
+  width: 45%;
+  /* margin: 0.34rem; */
+}
+input {
+  height: 3rem;
+  width: 100%;
+  padding: 0.34rem;
+  padding-left: 0.74rem;
+  border-radius: 0.2rem;
+  border: 0.1rem solid rgb(170, 165, 165);
+}
+.section button {
+  height: 3rem;
+  padding: 0.5rem;
+}
