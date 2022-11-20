@@ -2,8 +2,6 @@
 
 ## Description
 
-A resposive website to store all your passwords into the database.
-
 ## Prerequisites/Dependecies
 
 - Html
