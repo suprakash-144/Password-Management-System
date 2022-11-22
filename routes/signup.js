@@ -4,7 +4,7 @@ var userschema = require("../module/user");
 var bcrypt = require("bcrypt");
 
 function checkusername(req, res, next) {
-  var Usernamedet = userschema.findOne({ username: req.body.Email });
+  var Usernamedet = userschema.findOne({ username: req.body.Username });
   Usernamedet.exec((err, data) => {
     if (err) throw err;
     if (data) {
