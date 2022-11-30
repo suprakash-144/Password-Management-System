@@ -9,7 +9,7 @@ function checkusername(req, res, next) {
     if (err) throw err;
     if (data) {
       return res.render("signup", {
-        title: "signup",
+        title: "PMS",
         msg: "Username already exist",
       });
     }
@@ -22,7 +22,7 @@ function checkemail(req, res, next) {
     if (err) throw err;
     if (data) {
       return res.render("signup", {
-        title: "signup",
+        title: "PMS",
         msg: "Email already exist",
       });
     }
@@ -32,7 +32,11 @@ function checkemail(req, res, next) {
 
 /* GET signup page. */
 router.get("/", function (req, res, next) {
-  res.render("signup", { title: "signup", msg: "" });
+  var loginuser = localStorage.getItem("loginuser");
+  if (loginuser) {
+    res.redirect("/dashboard");
+  }
+  res.render("signup", { title: "PMS", msg: "" });
 });
 
 /* post request for  signup page. */
@@ -44,7 +48,7 @@ router.post("/", checkusername, checkemail, function (req, res, next) {
 
   if (Password != Passwordc) {
     res.render("signup", {
-      title: "signup",
+      title: "PMS",
       msg: "passwords are not matching",
     });
   } else {
@@ -56,7 +60,7 @@ router.post("/", checkusername, checkemail, function (req, res, next) {
     userdatils.save((err, data) => {
       if (err) throw err;
       res.render("signup", {
-        title: "signup",
+        title: "PMS",
         msg: "user registered succefully",
       });
     });
