@@ -2,7 +2,7 @@
 
 ## Description
 
-## Prerequisites/Dependecies
+## Prerequisites
 
 - Html
 - CSS
