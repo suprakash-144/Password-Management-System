@@ -2,12 +2,14 @@ var express = require("express");
 var chechklogintoken = require("../module/chechklogintoken");
 var router = express.Router();
 var passdomain = require("../module/password-catogery");
-// get new password adding page
+
+// get new password domain adding page
 router.get("/", chechklogintoken, function (req, res, next) {
   var loginuser = localStorage.getItem("loginuser");
   res.render("addnewpassword", { title: "PMS", loginuser: loginuser, msg: "" });
 });
 
+// saves new doman in the database
 router.post("/", function (req, res, next) {
   var loginuser = localStorage.getItem("loginuser");
   var newdomain = new passdomain({

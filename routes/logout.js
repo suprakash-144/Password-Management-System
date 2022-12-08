@@ -1,8 +1,9 @@
 var express = require("express");
 var router = express.Router();
 
-/* GET home page. */
+/*logout request  */
 router.post("/", function (req, res, next) {
+  //  removig the user tokens from localstorage
   localStorage.removeItem("usertoken");
   localStorage.removeItem("loginuser");
   res.redirect("/");

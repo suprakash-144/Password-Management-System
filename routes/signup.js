@@ -3,6 +3,7 @@ var router = express.Router();
 var userschema = require("../module/user");
 var bcrypt = require("bcrypt");
 
+// middlewares
 function checkusername(req, res, next) {
   var Usernamedet = userschema.findOne({ username: req.body.Username });
   Usernamedet.exec((err, data) => {
@@ -32,6 +33,7 @@ function checkemail(req, res, next) {
 
 /* GET signup page. */
 router.get("/", function (req, res, next) {
+  // chceking if the user is already loged in
   var loginuser = localStorage.getItem("loginuser");
   if (loginuser) {
     res.redirect("/dashboard");

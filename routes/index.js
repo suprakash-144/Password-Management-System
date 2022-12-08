@@ -10,13 +10,20 @@ if (typeof localStorage === "undefined" || localStorage === null) {
 }
 
 /* GET login page. */
+
 router.get("/", function (req, res, next) {
+  // chceking if the user is already loged in
   var loginuser = localStorage.getItem("loginuser");
   if (loginuser) {
+    //if the user is already loged in redirecting the user to dashboard
     res.redirect("/dashboard");
   }
+  //if not loged in then opening the login page
   res.render("index", { title: "PMS", msg: "" });
 });
+
+// login page submition request
+
 router.post("/", function (req, res, next) {
   var username = req.body.username;
   var password = req.body.Password;
@@ -24,6 +31,7 @@ router.post("/", function (req, res, next) {
   userdetails.exec((err, data) => {
     if (err) throw err;
     var userid = data._id;
+
     if (bcrypt.compareSync(password, data.Password)) {
       var token = jwt.sign({ userid: userid }, "loginid");
       localStorage.setItem("usertoken", token);

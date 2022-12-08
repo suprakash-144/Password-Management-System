@@ -11,6 +11,7 @@ var homeRouter = require("./routes/home");
 var addnewpassword = require("./routes/addnewpassword");
 var dashboard = require("./routes/dashboard");
 var logoutmethod = require("./routes/logout");
+var passwarddetails = require("./routes/password_details");
 
 var app = express();
 
@@ -24,6 +25,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
+// routes for the pages
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
 app.use("/signup", signupRouter);
@@ -31,6 +33,7 @@ app.use("/home", homeRouter);
 app.use("/addnewpassword", addnewpassword);
 app.use("/dashboard", dashboard);
 app.use("/logout", logoutmethod);
+app.use("/add", passwarddetails);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
