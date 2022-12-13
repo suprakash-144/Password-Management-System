@@ -7,15 +7,17 @@ mongoose.connect(
     // useCreateIndex: true,
   }
 );
-let passSchema = new mongoose.Schema({
-  Domain: {
+let PassdetSchema = new mongoose.Schema({
+  Username: {
     type: String,
     required: true,
-    index: {
-      unique: true,
-    },
   },
+  Password: {
+    type: String,
+    required: true,
+  },
+
   date: { type: Date, default: Date.now },
 });
 
-module.exports = mongoose.model("password-catogery", passSchema);
+module.exports = mongoose.model("Password_details", PassdetSchema);

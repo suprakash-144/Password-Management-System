@@ -33,7 +33,7 @@ app.use("/home", homeRouter);
 app.use("/addnewpassword", addnewpassword);
 app.use("/dashboard", dashboard);
 app.use("/logout", logoutmethod);
-app.use("/add", passwarddetails);
+app.use("/adddetail", passwarddetails);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

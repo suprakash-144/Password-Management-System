@@ -6,10 +6,14 @@ var chechklogintoken = require("../module/chechklogintoken");
 /* GET password details adding  page. */
 router.get("/", chechklogintoken, function (req, res, next) {
   var loginuser = localStorage.getItem("loginuser");
-  res.render("addpassworddetails", {
-    title: "PMS",
-    data: [],
-    loginuser: loginuser,
+  passdomain.find({}, (err, data) => {
+    if (err) throw err;
+
+    res.render("addpassworddetails", {
+      title: "PMS",
+      data: data,
+      loginuser: loginuser,
+    });
   });
 });
 router.post("/", function (req, res, next) {
