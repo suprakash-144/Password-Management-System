@@ -8,6 +8,10 @@ mongoose.connect(
   }
 );
 let PassdetSchema = new mongoose.Schema({
+  Domain: {
+    type: String,
+    required: true,
+  },
   Username: {
     type: String,
     required: true,

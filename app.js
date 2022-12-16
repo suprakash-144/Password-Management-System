@@ -12,6 +12,7 @@ var addnewpassword = require("./routes/addnewpassword");
 var dashboard = require("./routes/dashboard");
 var logoutmethod = require("./routes/logout");
 var passwarddetails = require("./routes/password_details");
+var viewdetail = require("./routes/viewpassworddetails");
 
 var app = express();
 
@@ -34,6 +35,7 @@ app.use("/addnewpassword", addnewpassword);
 app.use("/dashboard", dashboard);
 app.use("/logout", logoutmethod);
 app.use("/adddetail", passwarddetails);
+app.use("/viewdetail", viewdetail);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

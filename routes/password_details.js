@@ -1,6 +1,7 @@
 var express = require("express");
 var router = express.Router();
 var passdomain = require("../module/password-catogery");
+var passdetail = require("../module/password_details");
 var chechklogintoken = require("../module/chechklogintoken");
 
 /* GET password details adding  page. */
@@ -13,10 +14,25 @@ router.get("/", chechklogintoken, function (req, res, next) {
       title: "PMS",
       data: data,
       loginuser: loginuser,
+      Succes: "",
     });
   });
 });
-router.post("/", function (req, res, next) {
-  res.render("addpassworddetails", { title: "PMS", data: [] });
+router.post("/", chechklogintoken, function (req, res, next) {
+  var loginuser = localStorage.getItem("loginuser");
+  var passdetails = new passdetail({
+    Domain: req.body.Domain,
+    Username: req.body.Username,
+    Password: req.body.password,
+  });
+  passdetails.save((err, data) => {
+    if (err) throw err;
+    res.render("addpassworddetails", {
+      title: "PMS",
+      data: data,
+      loginuser: loginuser,
+      Succes: "Added succesufully",
+    });
+  });
 });
 module.exports = router;
