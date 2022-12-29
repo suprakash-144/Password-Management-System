@@ -1,6 +1,7 @@
 var express = require("express");
 var router = express.Router();
 var passdomain = require("../module/password-catogery");
+var passdet = require("../module/password_details");
 var chechklogintoken = require("../module/chechklogintoken");
 
 /* GET home page. */
@@ -14,10 +15,21 @@ router.get("/", chechklogintoken, function (req, res, next) {
   });
 });
 
-// post request in home page
-// router.post("/", function (req, res, next) {
-//   res.render("home", { title: "PMS", data: [] });
-// });
+router.get("/lookup/:id", chechklogintoken, function (req, res, next) {
+  var loginuser = localStorage.getItem("loginuser");
+  var passid = req.params.id;
+  var findid = passdomain.findById(passid);
+  findid.exec((err, data) => {
+    if (err) throw err;
+    passdet.find({ Domain: data.Domain }, (err, item) => {
+      res.render("viewpassdetail", {
+        title: "PMS",
+        data: item,
+        loginuser: loginuser,
+      });
+    });
+  });
+});
 
 // Get request for editing the domains
 
@@ -57,6 +69,21 @@ router.get("/delete/:id", chechklogintoken, function (req, res, next) {
   delpassdomain.exec((err) => {
     if (err) throw err;
     res.redirect("/home");
+  });
+});
+// request to filter or search domains from database
+router.post("/search", chechklogintoken, function (req, res, next) {
+  var loginuser = localStorage.getItem("loginuser");
+  var Domains = new RegExp(req.body.Domain, "i");
+
+  passdomain.find({ Domain: Domains }, function (err, data) {
+    if (err) console.warn(err);
+    // console.log(list);
+    res.render("home", {
+      title: "PMS",
+      data: data,
+      loginuser: loginuser,
+    });
   });
 });
 module.exports = router;

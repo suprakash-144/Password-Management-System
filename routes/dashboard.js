@@ -6,6 +6,7 @@ var chechklogintoken = require("../module/chechklogintoken");
 /* GET request for dashboard page. */
 router.get("/", chechklogintoken, function (req, res, next) {
   var loginuser = localStorage.getItem("loginuser");
+  // var Name = localStorage.getItem("Name");
   res.render("dashboard", { title: "PMS", data: [], loginuser: loginuser });
 });
 

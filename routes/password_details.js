@@ -22,17 +22,12 @@ router.post("/", chechklogintoken, function (req, res, next) {
   var loginuser = localStorage.getItem("loginuser");
   var passdetails = new passdetail({
     Domain: req.body.Domain,
-    Username: req.body.Username,
-    Password: req.body.password,
+    Username: req.body.username,
+    Password: req.body.passward,
   });
   passdetails.save((err, data) => {
     if (err) throw err;
-    res.render("addpassworddetails", {
-      title: "PMS",
-      data: data,
-      loginuser: loginuser,
-      Succes: "Added succesufully",
-    });
+    res.redirect("/adddetail");
   });
 });
 module.exports = router;

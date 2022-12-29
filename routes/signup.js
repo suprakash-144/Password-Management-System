@@ -43,6 +43,7 @@ router.get("/", function (req, res, next) {
 
 /* post request for  signup page. */
 router.post("/", checkusername, checkemail, function (req, res, next) {
+  // var name = req.body.name;
   var username = req.body.Username;
   var Email = req.body.Email;
   var Password = req.body.Password;
@@ -55,6 +56,7 @@ router.post("/", checkusername, checkemail, function (req, res, next) {
     });
   } else {
     var userdatils = new userschema({
+      // Name: name ,
       username: username,
       Email: Email,
       Password: bcrypt.hashSync(Password, 10),

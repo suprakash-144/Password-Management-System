@@ -56,4 +56,29 @@ router.get("/delete/:id", chechklogintoken, function (req, res, next) {
     res.redirect("/viewdetail");
   });
 });
+
+// request to handle filter and search
+router.post("/search", chechklogintoken, function (req, res, next) {
+  var loginuser = localStorage.getItem("loginuser");
+  var Domains = new RegExp(req.body.Domain, "i");
+  var username = new RegExp(req.body.Username, "i");
+  if (username != "" && Domains != "") {
+    var parameter = { $and: [{ Domain: Domains }, { Username: username }] };
+  } else if (username != "" && Domains == "") {
+    var parameter = { Username: username };
+  } else if (username == "" && Domains != "") {
+    var parameter = { Domain: Domains };
+  } else {
+    var parameter = {};
+  }
+  passdetail.find(parameter, function (err, data) {
+    if (err) console.warn(err);
+    // console.log(list);
+    res.render("viewpassdetail", {
+      title: "PMS",
+      data: data,
+      loginuser: loginuser,
+    });
+  });
+});
 module.exports = router;

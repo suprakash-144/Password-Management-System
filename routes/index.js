@@ -36,6 +36,7 @@ router.post("/", function (req, res, next) {
       var token = jwt.sign({ userid: userid }, "loginid");
       localStorage.setItem("usertoken", token);
       localStorage.setItem("loginuser", username);
+      // localStorage.setItem("Name", data.Name);
       res.redirect("/dashboard");
     } else {
       res.render("index", {
