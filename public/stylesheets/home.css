@@ -10,6 +10,10 @@
   width: 45%;
   margin-inline: 1rem;
 }
+body {
+  /* min-height: 100vh; */
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
 input {
   height: 3rem;
   width: 100%;
@@ -21,4 +25,12 @@ input {
 .section button {
   height: 3rem;
   padding: 0.5rem;
+}
+footer {
+  color: white;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background-color: black;
+  padding: 1rem;
 }

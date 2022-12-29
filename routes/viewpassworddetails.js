@@ -21,13 +21,13 @@ router.get("/", chechklogintoken, function (req, res, next) {
 router.get("/edit/:id", chechklogintoken, function (req, res, next) {
   var loginuser = localStorage.getItem("loginuser");
   var passid = req.params.id;
-  var findid = passdomain.findById(passid);
+  var findid = passdetail.findById(passid);
   findid.exec((err, data) => {
     if (err) throw err;
     //rendering the edit page with the domain data
     res.render("edit_passworddetails", {
       title: "PMS",
-      data: data,
+      item: data,
       loginuser: loginuser,
     });
   });
@@ -38,8 +38,9 @@ router.get("/edit/:id", chechklogintoken, function (req, res, next) {
 router.post("/edit", chechklogintoken, function (req, res, next) {
   var updateid = req.body.id;
   var updateddomain = passdetail.findByIdAndUpdate(updateid, {
-    //seting the new domain name
     Domain: req.body.Domain,
+    Username: req.body.username,
+    Password: req.body.passward,
   });
   updateddomain.exec((err, data) => {
     if (err) throw err;

@@ -30,13 +30,12 @@
 
     <section class="section">
         <div class="container">
-            <h2>Password Database</h2>
+            <h2>Password Details</h2>
             <table class="table">
                 <thead>
                     <tr>
                         <th>Domain</th>
                         <th>Username</th>
-                        <!-- <th>Password</th> -->
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -49,20 +48,19 @@
                             <td>
                                 <%= item.Username %>
                             </td>
-                            <!-- <td>
-                                <%= item.Password %>
-                            </td> -->
                             <td>
                                 <!-- <a href="/viewdetail/update/<%= item.id %>"><i class="bi bi-eye"></i></a> -->
-                                <!-- Button trigger modal -->
-                                <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                    see
+                                <button type="button" class="btn " data-bs-toggle="modal"
+                                    data-bs-target="#staticBackdrop<%= item.Username %>">
+                                    <!-- <i class="bi bi-eye"> -->
+                                    <i class="bi bi-eye-fill"></i>
                                 </button>
 
                                 <!-- Modal -->
-                                <div class="modal fade" id="exampleModal" tabindex="-1"
-                                    aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog">
+                                <div class="modal fade" id="staticBackdrop<%= item.Username %>"
+                                    data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+                                    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered">
                                         <div class="modal-content">
                                             <div class="modal-header">
                                                 <h5 class="modal-title" id="exampleModalLabel">Password details</h5>
@@ -85,12 +83,10 @@
                                         </div>
                                     </div>
                                 </div>
-
-
-
-
-                                <a href="/viewdetail/edit/<%= item.id %>"><i class="bi bi-pencil-square"></i></a>
-                                <a href="/viewdetail/delete/<%= item.id %>"><i class="bi bi-trash"></i></a>
+                                <a class="btn btn-outline-primary" href="/viewdetail/edit/<%= item.id %>"><i
+                                        class="bi bi-pencil-square"></i></a>
+                                <a class="btn  btn-outline-danger" href="/viewdetail/delete/<%= item.id %>"><i
+                                        class="bi bi-trash"></i></a>
                             </td>
                         </tr>
 
@@ -107,8 +103,8 @@
         </div>
     </section>
 
+    <%- include("footer")%>
+        </body>
 
-    </body>
 
-
-    </html>
+        </html>
